@@ -22,11 +22,12 @@ import static org.aspectj.weaver.tools.cache.SimpleCacheFactory.enabled;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User implements Serializable, UserDetails {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String firstName;
     private String lastName;
